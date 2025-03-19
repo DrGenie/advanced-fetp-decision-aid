@@ -1,0 +1,415 @@
+/* RESET & BASE */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #eef2f7;
+  color: #333;
+}
+.container {
+  width: 95%;
+  max-width: 1200px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  padding: 20px 30px;
+}
+
+/* HEADER */
+header h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #003366;
+}
+header p {
+  font-size: 1.1em;
+  color: #555;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 10px;
+}
+.faq-btn {
+  display: block;
+  margin: 0 auto 10px;
+  background-color: #003366;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* NAV TABS */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.tablink {
+  background: #d9e4f5;
+  border: none;
+  padding: 10px 16px;
+  margin: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  color: #003366;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.tablink.active {
+  background: #003366;
+  color: #fff;
+}
+.tablink:hover {
+  background: #b0c4de;
+}
+
+/* TAB CONTENTS */
+.tabcontent {
+  display: none;
+  margin-top: 10px;
+}
+.tabcontent h2 {
+  margin-bottom: 10px;
+  color: #003366;
+}
+.tabcontent p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* INTRO BOX */
+.intro-box {
+  background-color: #cce0ff;
+  padding: 20px;
+  border-left: 5px solid #003366;
+  border-radius: 4px;
+  font-size: 1.1em;
+  line-height: 1.5em;
+}
+
+/* CALCULATION INFO & INSTRUCTIONS */
+.calculation-info {
+  background-color: #f2f7ff;
+  border-left: 4px solid #003366;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 15px;
+}
+.instructions {
+  font-style: italic;
+  padding: 20px;
+  background-color: #e0f0ff;
+  border: 1px solid #99c;
+  border-radius: 8px;
+}
+
+/* INPUTS SECTION */
+.inputs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+.input-block {
+  background-color: #fff;
+  border: 1px solid #ccd6e5;
+  border-radius: 8px;
+  padding: 8px;
+}
+.input-label {
+  font-size: 1em;
+  color: #003366;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.input-label .reference {
+  font-size: 0.8em;
+  color: #777;
+}
+.input-options {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Alternative Info Icons */
+.alternative-info, .alternative-info-input {
+  font-size: 14px;
+  color: #007bff;
+  cursor: help;
+  background-color: transparent;
+  border: 1px solid #007bff;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.alternative-info:before, .alternative-info-input:before {
+  font-family: "Font Awesome 6 Free";
+  content: "\f05a";
+  font-weight: 900;
+}
+
+/* Dynamic Cost Box */
+#dynamicCostEstimate {
+  border: 1px solid #003366;
+  border-radius: 6px;
+  background-color: #f0f7fd;
+  padding: 10px;
+  margin: 15px 0;
+  text-align: center;
+}
+
+/* GRID for Attributes */
+.attributes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 8px;
+  margin-top: 15px;
+}
+.attribute-card {
+  background-color: #f9fbfd;
+  border: 1px solid #ccd6e5;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.attribute-icon {
+  font-size: 26px;
+  color: #003366;
+}
+[data-tooltip] {
+  position: relative;
+  cursor: help;
+}
+[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #003366;
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  z-index: 10;
+  width: 220px;
+  text-align: center;
+}
+
+/* CHARTS */
+.chart-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.chart-box {
+  flex: 1 1 45%;
+  padding: 10px;
+  background: #f2f7ff;
+  border: 1px solid #ccd6e5;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.chart-box h3 {
+  text-align: center;
+  margin-bottom: 8px;
+  color: #003366;
+}
+.chart-box canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* VIDEO CONTAINER */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+  margin-top: 20px;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.tutorial-btn {
+  background-color: #003366;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  font-size: 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.tutorial-link {
+  text-decoration: none;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+}
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px 30px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 8px;
+  position: relative;
+  animation: fadeIn 0.5s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.close-button {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close-button:hover,
+.close-button:focus {
+  color: #000;
+}
+
+/* FAQ Overlay */
+.faq-overlay {
+  display: none;
+  position: fixed;
+  z-index: 300;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  overflow: auto;
+}
+.faq-content {
+  background: #fff;
+  margin: 5% auto;
+  padding: 20px 30px;
+  border-radius: 8px;
+  max-width: 600px;
+  position: relative;
+}
+.close-faq {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* SCENARIOS TABLE */
+.table-container {
+  overflow-x: auto;
+}
+#FETPScenarioTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+#FETPScenarioTable th,
+#FETPScenarioTable td {
+  border: 1px solid #ccd6e5;
+  padding: 8px;
+  text-align: center;
+}
+#FETPScenarioTable th {
+  background-color: #003366;
+  color: #fff;
+  font-weight: 600;
+}
+#FETPScenarioTable tr:nth-child(even) {
+  background-color: #e6eef7;
+}
+
+/* BUTTONS ROW */
+.buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+.buttons-row button {
+  background-color: #003366;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 1em;
+}
+.buttons-row button:hover {
+  background-color: #002244;
+  transform: translateY(-2px);
+}
+
+/* COST BREAKDOWN CARDS */
+.cost-breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+.cost-card-detail {
+  background-color: #fff;
+  border: 1px solid #ccd6e5;
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+}
+.cost-card-detail h4 {
+  margin-bottom: 5px;
+  font-size: 1em;
+  color: #003366;
+}
+.cost-card-detail p {
+  font-size: 0.9em;
+  color: #555;
+  margin: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .cost-card-detail { width: 100%; }
+}
+@media (max-width: 768px) {
+  .tabs { flex-direction: column; align-items: center; }
+  .tablink { width: 100%; text-align: left; border-radius: 0; }
+  .chart-box { flex: 1 1 100%; height: 320px; }
+  .inputs-grid { grid-template-columns: 1fr; }
+}
