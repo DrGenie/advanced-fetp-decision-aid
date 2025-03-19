@@ -16,22 +16,36 @@ var costBenefitChart = null;
 /* Updated DCE Coefficients for Advanced FETP */
 var mainCoefficients = {
   base: -0.1,
+  // Delivery Method coefficients
   delivery_inperson: 0.3,
   delivery_hybrid: 0.5,
   delivery_online: 0,
-  capacity_500: 0,
-  capacity_1000: 0.2,
-  capacity_2000: 0.4,
+  // Annual Training Capacity coefficients (new reference: 100 trainees)
+  capacity_100: 0,
+  capacity_500: 0.2,
+  capacity_1000: 0.4,
+  capacity_2000: 0.6,
+  // Stipend Support coefficients
   stipend_75000: 0,
   stipend_100000: 0.2,
   stipend_150000: 0.4,
+  // Training Model coefficients
+  trainingModel_parttime: 0,
+  trainingModel_fulltime: 0.3,
+  // Career Pathways coefficients
   career_government: 0,
   career_international: 0.3,
   career_academic: 0.2,
   career_private: 0.1,
+  // Geographic Distribution coefficients
+  geographic_centralized: 0,
+  geographic_regional: 0.2,
+  geographic_nationwide: 0.4,
+  // Accreditation coefficients
   accreditation_unaccredited: -0.5,
   accreditation_national: 0.2,
   accreditation_international: 0.5,
+  // Total Cost coefficients
   cost_low: 0.5,
   cost_medium: 0,
   cost_high: -0.5
@@ -74,17 +88,21 @@ function openTab(tabId, clickedBtn) {
 /* Build Scenario */
 function buildFETPScenario() {
   var deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked') ? document.querySelector('input[name="deliveryMethod"]:checked').value : null;
+  var trainingModel = document.querySelector('input[name="trainingModel"]:checked') ? document.querySelector('input[name="trainingModel"]:checked').value : null;
   var annualCapacity = document.querySelector('input[name="annualCapacity"]:checked') ? document.querySelector('input[name="annualCapacity"]:checked').value : null;
   var stipendSupport = document.querySelector('input[name="stipendSupport"]:checked') ? document.querySelector('input[name="stipendSupport"]:checked').value : null;
   var careerPathway = document.querySelector('input[name="careerPathway"]:checked') ? document.querySelector('input[name="careerPathway"]:checked').value : null;
+  var geographicDistribution = document.querySelector('input[name="geographicDistribution"]:checked') ? document.querySelector('input[name="geographicDistribution"]:checked').value : null;
   var accreditation = document.querySelector('input[name="accreditation"]:checked') ? document.querySelector('input[name="accreditation"]:checked').value : null;
   var totalCost = document.querySelector('input[name="totalCost"]:checked') ? document.querySelector('input[name="totalCost"]:checked').value : null;
-  if(!deliveryMethod || !annualCapacity || !stipendSupport || !careerPathway || !accreditation || !totalCost) return null;
+  if(!deliveryMethod || !trainingModel || !annualCapacity || !stipendSupport || !careerPathway || !geographicDistribution || !accreditation || !totalCost) return null;
   return {
     deliveryMethod: deliveryMethod,
+    trainingModel: trainingModel,
     annualCapacity: annualCapacity,
     stipendSupport: stipendSupport,
     careerPathway: careerPathway,
+    geographicDistribution: geographicDistribution,
     accreditation: accreditation,
     totalCost: totalCost
   };
@@ -97,8 +115,12 @@ function computeFETPUptake(sc) {
   if (sc.deliveryMethod === "inperson") U += mainCoefficients.delivery_inperson;
   else if (sc.deliveryMethod === "hybrid") U += mainCoefficients.delivery_hybrid;
   else if (sc.deliveryMethod === "online") U += mainCoefficients.delivery_online;
+  // Training Model
+  if (sc.trainingModel === "parttime") U += mainCoefficients.trainingModel_parttime;
+  else if (sc.trainingModel === "fulltime") U += mainCoefficients.trainingModel_fulltime;
   // Annual Capacity
-  if (sc.annualCapacity === "500") U += mainCoefficients.capacity_500;
+  if (sc.annualCapacity === "100") U += mainCoefficients.capacity_100;
+  else if (sc.annualCapacity === "500") U += mainCoefficients.capacity_500;
   else if (sc.annualCapacity === "1000") U += mainCoefficients.capacity_1000;
   else if (sc.annualCapacity === "2000") U += mainCoefficients.capacity_2000;
   // Stipend Support
@@ -110,6 +132,10 @@ function computeFETPUptake(sc) {
   else if (sc.careerPathway === "international") U += mainCoefficients.career_international;
   else if (sc.careerPathway === "academic") U += mainCoefficients.career_academic;
   else if (sc.careerPathway === "private") U += mainCoefficients.career_private;
+  // Geographic Distribution
+  if (sc.geographicDistribution === "centralized") U += mainCoefficients.geographic_centralized;
+  else if (sc.geographicDistribution === "regional") U += mainCoefficients.geographic_regional;
+  else if (sc.geographicDistribution === "nationwide") U += mainCoefficients.geographic_nationwide;
   // Accreditation
   if (sc.accreditation === "unaccredited") U += mainCoefficients.accreditation_unaccredited;
   else if (sc.accreditation === "national") U += mainCoefficients.accreditation_national;
@@ -177,15 +203,12 @@ function renderFETPCostsBenefits() {
     document.getElementById("costsFETPResults").innerHTML = "<p>Please select all inputs before computing costs.</p>";
     return;
   }
-  // Convert annual capacity to number
   var trainees = parseInt(scenario.annualCapacity, 10);
   var uptake = computeFETPUptake(scenario);
   var effectiveEnrollment = trainees * uptake;
-  // Total cost as per selected option (in rupees per month)
   var costMapping = { low: 27000, medium: 55000, high: 83000 };
   var totalCost = costMapping[scenario.totalCost];
   
-  // QALY gain from selection
   var sel = document.getElementById("qalyFETPSelect");
   var qVal = (sel && sel.value === "low") ? 0.01 : (sel && sel.value === "high") ? 0.08 : 0.05;
   
@@ -255,7 +278,6 @@ function saveFETPScenario() {
   var uptake = computeFETPUptake(sc);
   var pct = uptake * 100;
   sc.uptake = pct.toFixed(2);
-  // For simplicity, net benefit is approximated as (uptake percentage × 1000)
   var netB = (pct * 10).toFixed(2);
   sc.netBenefit = netB;
   sc.name = "Scenario " + (savedFETPScenarios.length + 1);
@@ -264,9 +286,11 @@ function saveFETPScenario() {
   var row = document.createElement("tr");
   row.innerHTML = "<td>" + sc.name + "</td>" +
                   "<td>" + sc.deliveryMethod + "</td>" +
+                  "<td>" + sc.trainingModel + "</td>" +
                   "<td>" + sc.annualCapacity + "</td>" +
                   "<td>₹" + sc.stipendSupport + "</td>" +
                   "<td>" + sc.careerPathway + "</td>" +
+                  "<td>" + sc.geographicDistribution + "</td>" +
                   "<td>" + sc.accreditation + "</td>" +
                   "<td>" + sc.totalCost + "</td>" +
                   "<td>" + sc.uptake + "%</td>" +
@@ -290,9 +314,11 @@ function exportFETPComparison() {
     yPos += 7;
     doc.setFontSize(12);
     doc.text("Delivery: " + sc.deliveryMethod, 15, yPos); yPos += 5;
+    doc.text("Model: " + sc.trainingModel, 15, yPos); yPos += 5;
     doc.text("Capacity: " + sc.annualCapacity, 15, yPos); yPos += 5;
     doc.text("Stipend: ₹" + sc.stipendSupport, 15, yPos); yPos += 5;
     doc.text("Career: " + sc.careerPathway, 15, yPos); yPos += 5;
+    doc.text("Geographic: " + sc.geographicDistribution, 15, yPos); yPos += 5;
     doc.text("Accreditation: " + sc.accreditation, 15, yPos); yPos += 5;
     doc.text("Cost: " + sc.totalCost, 15, yPos); yPos += 5;
     doc.text("Adoption: " + sc.uptake + "%, Net Benefit: ₹" + sc.netBenefit, 15, yPos);
@@ -315,13 +341,15 @@ function exportIndividualScenario() {
   doc.text("Scenario " + index + ": " + scenario.name, 15, 20);
   doc.setFontSize(12);
   doc.text("Delivery: " + scenario.deliveryMethod, 15, 30);
-  doc.text("Capacity: " + scenario.annualCapacity, 15, 40);
-  doc.text("Stipend: ₹" + scenario.stipendSupport, 15, 50);
-  doc.text("Career: " + scenario.careerPathway, 15, 60);
-  doc.text("Accreditation: " + scenario.accreditation, 15, 70);
-  doc.text("Total Cost: " + scenario.totalCost, 15, 80);
-  doc.text("Adoption Likelihood: " + scenario.uptake + "%", 15, 90);
-  doc.text("Net Benefit: ₹" + scenario.netBenefit, 15, 100);
+  doc.text("Model: " + scenario.trainingModel, 15, 40);
+  doc.text("Capacity: " + scenario.annualCapacity, 15, 50);
+  doc.text("Stipend: ₹" + scenario.stipendSupport, 15, 60);
+  doc.text("Career: " + scenario.careerPathway, 15, 70);
+  doc.text("Geographic: " + scenario.geographicDistribution, 15, 80);
+  doc.text("Accreditation: " + scenario.accreditation, 15, 90);
+  doc.text("Total Cost: " + scenario.totalCost, 15, 100);
+  doc.text("Adoption Likelihood: " + scenario.uptake + "%", 15, 110);
+  doc.text("Net Benefit: ₹" + scenario.netBenefit, 15, 120);
   doc.save("Scenario_" + index + ".pdf");
 }
 
