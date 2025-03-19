@@ -101,47 +101,69 @@
       <div class="attribute-card">
         <div class="attribute-icon">
           <i class="fa-solid fa-chalkboard"></i>
-          <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Mode of delivery: In-Person 🏫 (hands‑on training at designated centers), Hybrid 💻🏫 (online modules with periodic in‑person sessions), Fully Online 💻 (digital learning via government platforms)."></i>
+          <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Mode of delivery: In-Person 🏫 (hands‑on training), Hybrid 💻🏫 (online modules with periodic sessions), Fully Online 💻 (digital learning via government platforms)."></i>
         </div>
         <div class="attribute-content">
           <h4>Training Delivery Method</h4>
           <p>In-Person, Hybrid, Fully Online.</p>
         </div>
       </div>
-      <!-- 2) Annual Training Capacity -->
+      <!-- 2) Training Model -->
+      <div class="attribute-card">
+        <div class="attribute-icon">
+          <i class="fa-solid fa-user-clock"></i>
+          <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Indicates trainee’s time commitment and financial support: Part-Time Model 🕒 (continue working), Full-Time Model (Scholarship) 🎓 (commit full-time with scholarship)."></i>
+        </div>
+        <div class="attribute-content">
+          <h4>Training Model</h4>
+          <p>Part-Time, Full-Time (Scholarship).</p>
+        </div>
+      </div>
+      <!-- 3) Annual Training Capacity -->
       <div class="attribute-card">
         <div class="attribute-icon">
           <i class="fa-solid fa-people-group"></i>
-          <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Number of trainees enrolled per year: 500 for specialized training, 1000 for a balanced approach, 2000+ for rapid expansion."></i>
+          <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Number of trainees enrolled per year: 100 (ref), 500, 1000, 2000+ trainees."></i>
         </div>
         <div class="attribute-content">
           <h4>Annual Training Capacity</h4>
-          <p>500, 1000, 2000+ trainees.</p>
+          <p>100, 500, 1000, 2000+ trainees.</p>
         </div>
       </div>
-      <!-- 3) Stipend Support -->
+      <!-- 4) Stipend Support -->
       <div class="attribute-card">
         <div class="attribute-icon">
           <i class="fa-solid fa-hand-holding-dollar"></i>
-          <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Monthly financial support provided to trainees. Options: ₹75,000, ₹100,000, ₹150,000; may vary by location and cost of living."></i>
+          <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Monthly financial support: Options from ₹75,000 to ₹150,000."></i>
         </div>
         <div class="attribute-content">
           <h4>Stipend Support</h4>
           <p>₹75,000–₹150,000/month.</p>
         </div>
       </div>
-      <!-- 4) Career Pathways -->
+      <!-- 5) Career Pathways -->
       <div class="attribute-card">
         <div class="attribute-icon">
           <i class="fa-solid fa-briefcase"></i>
-          <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Post-training career options: Government roles, International organizations, Academic &amp; research careers, Private sector/NGOs."></i>
+          <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Post-training career options: Government roles, International organizations, Academic/Research, Private/NGOs."></i>
         </div>
         <div class="attribute-content">
           <h4>Career Pathways</h4>
           <p>Government, International, Academic, Private/NGOs.</p>
         </div>
       </div>
-      <!-- 5) Accreditation & Quality Assurance -->
+      <!-- 6) Geographic Distribution -->
+      <div class="attribute-card">
+        <div class="attribute-icon">
+          <i class="fa-solid fa-map"></i>
+          <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Spatial accessibility: Centralized Distribution 🏢, Regional Distribution 🏘️, Nationwide Distribution 🇮🇳."></i>
+        </div>
+        <div class="attribute-content">
+          <h4>Geographic Distribution</h4>
+          <p>Centralized, Regional, Nationwide.</p>
+        </div>
+      </div>
+      <!-- 7) Accreditation & Quality Assurance -->
       <div class="attribute-card">
         <div class="attribute-icon">
           <i class="fa-solid fa-certificate"></i>
@@ -152,11 +174,11 @@
           <p>Unaccredited, National, International.</p>
         </div>
       </div>
-      <!-- 6) Total Cost -->
+      <!-- 8) Total Cost -->
       <div class="attribute-card">
         <div class="attribute-icon">
           <i class="fa-solid fa-calculator"></i>
-          <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Total economic burden per month. Options: Low (₹27,000), Medium (₹55,000), High (₹83,000) reflecting direct and indirect cost components."></i>
+          <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Monthly economic burden: Low (₹27K), Medium (₹55K), High (₹83K) (direct + indirect costs)."></i>
         </div>
         <div class="attribute-content">
           <h4>Total Cost</h4>
@@ -185,15 +207,27 @@
               <label><input type="radio" name="deliveryMethod" value="online" /> Fully Online 💻</label>
             </div>
           </div>
+          <!-- Training Model -->
+          <div class="input-block">
+            <label class="input-label">
+              Training Model <span class="reference">(Ref: Part-Time)</span>
+              <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: Part-Time Model 🕒 (continue working) or Full-Time Model (Scholarship) 🎓 (full-time commitment with scholarship)."></i>
+            </label>
+            <div class="input-options">
+              <label><input type="radio" name="trainingModel" value="parttime" checked /> Part-Time Model 🕒</label>
+              <label><input type="radio" name="trainingModel" value="fulltime" /> Full-Time Model (Scholarship) 🎓</label>
+            </div>
+          </div>
           <!-- Annual Training Capacity -->
           <div class="input-block">
             <label class="input-label">
-              Annual Training Capacity <span class="reference">(Ref: 1000 trainees)</span>
-              <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: 500, 1000, 2000+ trainees."></i>
+              Annual Training Capacity <span class="reference">(Ref: 100 trainees)</span>
+              <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: 100 (ref), 500, 1000, 2000+ trainees."></i>
             </label>
             <div class="input-options">
+              <label><input type="radio" name="annualCapacity" value="100" checked /> 100 trainees</label>
               <label><input type="radio" name="annualCapacity" value="500" /> 500 trainees</label>
-              <label><input type="radio" name="annualCapacity" value="1000" checked /> 1000 trainees</label>
+              <label><input type="radio" name="annualCapacity" value="1000" /> 1000 trainees</label>
               <label><input type="radio" name="annualCapacity" value="2000" /> 2000+ trainees</label>
             </div>
           </div>
@@ -213,7 +247,7 @@
           <div class="input-block">
             <label class="input-label">
               Career Pathways <span class="reference">(Ref: Government roles)</span>
-              <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: Government roles, International organizations, Academic &amp; Research, Private sector/NGOs."></i>
+              <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: Government roles, International, Academic &amp; Research, Private/NGOs."></i>
             </label>
             <div class="input-options">
               <label><input type="radio" name="careerPathway" value="government" checked /> Government roles 🏛️</label>
@@ -222,10 +256,22 @@
               <label><input type="radio" name="careerPathway" value="private" /> Private/NGOs 🤝</label>
             </div>
           </div>
+          <!-- Geographic Distribution -->
+          <div class="input-block">
+            <label class="input-label">
+              Geographic Distribution <span class="reference">(Ref: Regional)</span>
+              <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: Centralized Distribution 🏢, Regional Distribution 🏘️, Nationwide Distribution 🇮🇳."></i>
+            </label>
+            <div class="input-options">
+              <label><input type="radio" name="geographicDistribution" value="centralized" /> Centralized Distribution 🏢</label>
+              <label><input type="radio" name="geographicDistribution" value="regional" checked /> Regional Distribution 🏘️</label>
+              <label><input type="radio" name="geographicDistribution" value="nationwide" /> Nationwide Distribution 🇮🇳</label>
+            </div>
+          </div>
           <!-- Accreditation & Quality Assurance -->
           <div class="input-block">
             <label class="input-label">
-              Accreditation &amp; Quality <span class="reference">(Ref: National Accreditation)</span>
+              Accreditation &amp; Quality <span class="reference">(Ref: National)</span>
               <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: Unaccredited, National Accreditation, International Accreditation."></i>
             </label>
             <div class="input-options">
@@ -238,7 +284,7 @@
           <div class="input-block">
             <label class="input-label">
               Total Cost <span class="reference">(Ref: Medium - ₹55,000/month)</span>
-              <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Monthly economic burden: Low (₹27K), Medium (₹55K), High (₹83K)."></i>
+              <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Monthly cost: Low (₹27K), Medium (₹55K), High (₹83K)."></i>
             </label>
             <div class="input-options">
               <label><input type="radio" name="totalCost" value="low" /> Low (₹27,000/month) 🟢</label>
@@ -291,7 +337,7 @@
       <p>
         This section estimates the overall programme cost and monetised benefits.
         <br/><small>
-          Benefits = (QALY Gain per Participant × Effective Enrollment × ₹50,000). Effective Enrollment is the product of Annual Capacity and the Predicted Uptake.
+          Benefits = (QALY Gain per Participant × Effective Enrollment × ₹50,000). Effective Enrollment = Annual Capacity × Predicted Uptake.
         </small>
       </p>
       <div class="calculation-info" id="dynamicCostEstimate">
@@ -378,9 +424,11 @@
             <tr>
               <th>Name</th>
               <th>Delivery</th>
+              <th>Model</th>
               <th>Capacity</th>
               <th>Stipend</th>
               <th>Career</th>
+              <th>Geographic</th>
               <th>Accreditation</th>
               <th>Total Cost</th>
               <th>Adoption (%)</th>
