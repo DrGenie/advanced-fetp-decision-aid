@@ -26,8 +26,8 @@
   <header>
     <h1>Advanced FETP Decision Aid Tool</h1>
     <p>
-      The Advanced Field Epidemiology Training Program (FETP) plays an important role in strengthening India’s public health workforce.
-      Explore different configurations—from delivery mode to accreditation—to predict programme uptake, evaluate cost–benefit tradeoffs, and inform policy design.
+      The Advanced Field Epidemiology Training Program (FETP) plays a pivotal role in strengthening India’s public health workforce.
+      Explore different configurations—from delivery mode to accreditation—to forecast programme uptake, evaluate cost–benefit tradeoffs, and inform policy design.
     </p>
     <button id="faqBtn" class="faq-btn" onclick="toggleFAQ()">
       <i class="fa-solid fa-question-circle"></i> FAQ
@@ -85,7 +85,7 @@
       <h4>How to Use the Advanced FETP Tool</h4>
       <ol>
         <li><strong>Review Attributes:</strong> The Attributes tab explains each key feature with detailed info icons.</li>
-        <li><strong>Configure Inputs:</strong> In the Inputs tab, select options from each block. Reference values guide your selections.</li>
+        <li><strong>Configure Inputs:</strong> In the Inputs tab, select options from each group. Reference values guide your selections.</li>
         <li><strong>Adoption Likelihood:</strong> View a chart predicting stakeholder support based on your configuration.</li>
         <li><strong>Costs &amp; Benefits:</strong> See a dynamic analysis of the selected total cost and estimated benefits.</li>
         <li><strong>Saved Scenarios:</strong> Save and export scenario details for side-by-side comparison.</li>
@@ -97,7 +97,8 @@
   <section id="attributesTab" class="tabcontent" tabindex="0">
     <h2>Key Program Features</h2>
     <div class="attributes-grid">
-      <!-- 1) Training Delivery Method -->
+      <!-- (Attributes content remains unchanged) -->
+      <!-- Training Delivery Method -->
       <div class="attribute-card">
         <div class="attribute-icon">
           <i class="fa-solid fa-chalkboard"></i>
@@ -108,18 +109,18 @@
           <p>In-Person, Hybrid, Fully Online.</p>
         </div>
       </div>
-      <!-- 2) Training Model -->
+      <!-- Training Model -->
       <div class="attribute-card">
         <div class="attribute-icon">
           <i class="fa-solid fa-user-clock"></i>
-          <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Indicates trainee’s time commitment and financial support: Part-Time Model 🕒 (continue working), Full-Time Model (Scholarship) 🎓 (commit full-time with scholarship)."></i>
+          <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Indicates trainee’s time commitment and financial support: Part-Time Model 🕒 (continue working) or Full-Time Model (Scholarship) 🎓 (full-time commitment with scholarship)."></i>
         </div>
         <div class="attribute-content">
           <h4>Training Model</h4>
           <p>Part-Time, Full-Time (Scholarship).</p>
         </div>
       </div>
-      <!-- 3) Annual Training Capacity -->
+      <!-- Annual Training Capacity -->
       <div class="attribute-card">
         <div class="attribute-icon">
           <i class="fa-solid fa-people-group"></i>
@@ -130,7 +131,7 @@
           <p>100, 500, 1000, 2000+ trainees.</p>
         </div>
       </div>
-      <!-- 4) Stipend Support -->
+      <!-- Stipend Support -->
       <div class="attribute-card">
         <div class="attribute-icon">
           <i class="fa-solid fa-hand-holding-dollar"></i>
@@ -141,7 +142,7 @@
           <p>₹75,000–₹150,000/month.</p>
         </div>
       </div>
-      <!-- 5) Career Pathways -->
+      <!-- Career Pathways -->
       <div class="attribute-card">
         <div class="attribute-icon">
           <i class="fa-solid fa-briefcase"></i>
@@ -152,7 +153,7 @@
           <p>Government, International, Academic, Private/NGOs.</p>
         </div>
       </div>
-      <!-- 6) Geographic Distribution -->
+      <!-- Geographic Distribution -->
       <div class="attribute-card">
         <div class="attribute-icon">
           <i class="fa-solid fa-map"></i>
@@ -163,7 +164,7 @@
           <p>Centralized, Regional, Nationwide.</p>
         </div>
       </div>
-      <!-- 7) Accreditation & Quality Assurance -->
+      <!-- Accreditation & Quality Assurance -->
       <div class="attribute-card">
         <div class="attribute-icon">
           <i class="fa-solid fa-certificate"></i>
@@ -174,7 +175,7 @@
           <p>Unaccredited, National, International.</p>
         </div>
       </div>
-      <!-- 8) Total Cost -->
+      <!-- Total Cost -->
       <div class="attribute-card">
         <div class="attribute-icon">
           <i class="fa-solid fa-calculator"></i>
@@ -194,102 +195,124 @@
       <h2>Configure Advanced FETP Options <i class="fa-solid fa-info-circle alternative-info-input" data-tooltip="Hover over each icon for details."></i></h2>
       <p>Select your options below. All fields are required. <em>(Reference values provided)</em></p>
       <form onsubmit="event.preventDefault();">
-        <div class="inputs-grid">
-          <!-- Training Delivery Method -->
-          <div class="input-block">
-            <label class="input-label">
-              Training Delivery Method <span class="reference">(Ref: Hybrid)</span>
-              <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: In-Person 🏫, Hybrid 💻🏫, Fully Online 💻."></i>
-            </label>
-            <div class="input-options">
-              <label><input type="radio" name="deliveryMethod" value="inperson" /> In-Person 🏫</label>
-              <label><input type="radio" name="deliveryMethod" value="hybrid" checked /> Hybrid 💻🏫</label>
-              <label><input type="radio" name="deliveryMethod" value="online" /> Fully Online 💻</label>
+        <!-- Group 1: Program Format -->
+        <div class="group-card">
+          <h3>Program Format</h3>
+          <div class="inputs-grid">
+            <!-- Training Delivery Method -->
+            <div class="input-block">
+              <label class="input-label">
+                Training Delivery Method <span class="reference">(Ref: Hybrid)</span>
+                <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: In-Person 🏫, Hybrid 💻🏫, Fully Online 💻."></i>
+              </label>
+              <div class="input-options">
+                <label><input type="radio" name="deliveryMethod" value="inperson" /> In-Person 🏫</label>
+                <label><input type="radio" name="deliveryMethod" value="hybrid" checked /> Hybrid 💻🏫</label>
+                <label><input type="radio" name="deliveryMethod" value="online" /> Fully Online 💻</label>
+              </div>
+            </div>
+            <!-- Training Model -->
+            <div class="input-block">
+              <label class="input-label">
+                Training Model <span class="reference">(Ref: Part-Time)</span>
+                <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: Part-Time Model 🕒 (continue working) or Full-Time Model (Scholarship) 🎓 (full-time commitment with scholarship)."></i>
+              </label>
+              <div class="input-options">
+                <label><input type="radio" name="trainingModel" value="parttime" checked /> Part-Time Model 🕒</label>
+                <label><input type="radio" name="trainingModel" value="fulltime" /> Full-Time Model (Scholarship) 🎓</label>
+              </div>
+            </div>
+            <!-- Geographic Distribution -->
+            <div class="input-block">
+              <label class="input-label">
+                Geographic Distribution <span class="reference">(Ref: Regional)</span>
+                <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: Centralized Distribution 🏢, Regional Distribution 🏘️, Nationwide Distribution 🇮🇳."></i>
+              </label>
+              <div class="input-options">
+                <label><input type="radio" name="geographicDistribution" value="centralized" /> Centralized Distribution 🏢</label>
+                <label><input type="radio" name="geographicDistribution" value="regional" checked /> Regional Distribution 🏘️</label>
+                <label><input type="radio" name="geographicDistribution" value="nationwide" /> Nationwide Distribution 🇮🇳</label>
+              </div>
             </div>
           </div>
-          <!-- Training Model -->
-          <div class="input-block">
-            <label class="input-label">
-              Training Model <span class="reference">(Ref: Part-Time)</span>
-              <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: Part-Time Model 🕒 (continue working) or Full-Time Model (Scholarship) 🎓 (full-time commitment with scholarship)."></i>
-            </label>
-            <div class="input-options">
-              <label><input type="radio" name="trainingModel" value="parttime" checked /> Part-Time Model 🕒</label>
-              <label><input type="radio" name="trainingModel" value="fulltime" /> Full-Time Model (Scholarship) 🎓</label>
+        </div>
+        <!-- Group 2: Operational Capacity & Support -->
+        <div class="group-card">
+          <h3>Operational Capacity &amp; Support</h3>
+          <div class="inputs-grid">
+            <!-- Annual Training Capacity -->
+            <div class="input-block">
+              <label class="input-label">
+                Annual Training Capacity <span class="reference">(Ref: 100 trainees)</span>
+                <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: 100 (ref), 500, 1000, 2000+ trainees."></i>
+              </label>
+              <div class="input-options">
+                <label><input type="radio" name="annualCapacity" value="100" checked /> 100 trainees</label>
+                <label><input type="radio" name="annualCapacity" value="500" /> 500 trainees</label>
+                <label><input type="radio" name="annualCapacity" value="1000" /> 1000 trainees</label>
+                <label><input type="radio" name="annualCapacity" value="2000" /> 2000+ trainees</label>
+              </div>
+            </div>
+            <!-- Stipend Support -->
+            <div class="input-block">
+              <label class="input-label">
+                Stipend Support <span class="reference">(Ref: ₹75,000)</span>
+                <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Monthly stipend options: ₹75,000, ₹100,000, ₹150,000."></i>
+              </label>
+              <div class="input-options">
+                <label><input type="radio" name="stipendSupport" value="75000" checked /> ₹75,000</label>
+                <label><input type="radio" name="stipendSupport" value="100000" /> ₹100,000</label>
+                <label><input type="radio" name="stipendSupport" value="150000" /> ₹150,000</label>
+              </div>
             </div>
           </div>
-          <!-- Annual Training Capacity -->
-          <div class="input-block">
-            <label class="input-label">
-              Annual Training Capacity <span class="reference">(Ref: 100 trainees)</span>
-              <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: 100 (ref), 500, 1000, 2000+ trainees."></i>
-            </label>
-            <div class="input-options">
-              <label><input type="radio" name="annualCapacity" value="100" checked /> 100 trainees</label>
-              <label><input type="radio" name="annualCapacity" value="500" /> 500 trainees</label>
-              <label><input type="radio" name="annualCapacity" value="1000" /> 1000 trainees</label>
-              <label><input type="radio" name="annualCapacity" value="2000" /> 2000+ trainees</label>
+        </div>
+        <!-- Group 3: Outcomes & Recognition -->
+        <div class="group-card">
+          <h3>Outcomes &amp; Recognition</h3>
+          <div class="inputs-grid">
+            <!-- Career Pathways -->
+            <div class="input-block">
+              <label class="input-label">
+                Career Pathways <span class="reference">(Ref: Government roles)</span>
+                <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: Government roles, International, Academic &amp; Research, Private/NGOs."></i>
+              </label>
+              <div class="input-options">
+                <label><input type="radio" name="careerPathway" value="government" checked /> Government roles 🏛️</label>
+                <label><input type="radio" name="careerPathway" value="international" /> International 🌐</label>
+                <label><input type="radio" name="careerPathway" value="academic" /> Academic &amp; Research 🎓</label>
+                <label><input type="radio" name="careerPathway" value="private" /> Private/NGOs 🤝</label>
+              </div>
+            </div>
+            <!-- Accreditation & Quality Assurance -->
+            <div class="input-block">
+              <label class="input-label">
+                Accreditation &amp; Quality <span class="reference">(Ref: National)</span>
+                <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: Unaccredited, National Accreditation, International Accreditation."></i>
+              </label>
+              <div class="input-options">
+                <label><input type="radio" name="accreditation" value="unaccredited" /> Unaccredited ⚠️</label>
+                <label><input type="radio" name="accreditation" value="national" checked /> National 🇮🇳</label>
+                <label><input type="radio" name="accreditation" value="international" /> International 🌍</label>
+              </div>
             </div>
           </div>
-          <!-- Stipend Support -->
-          <div class="input-block">
-            <label class="input-label">
-              Stipend Support <span class="reference">(Ref: ₹75,000)</span>
-              <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Monthly stipend options: ₹75,000, ₹100,000, ₹150,000."></i>
-            </label>
-            <div class="input-options">
-              <label><input type="radio" name="stipendSupport" value="75000" checked /> ₹75,000</label>
-              <label><input type="radio" name="stipendSupport" value="100000" /> ₹100,000</label>
-              <label><input type="radio" name="stipendSupport" value="150000" /> ₹150,000</label>
-            </div>
-          </div>
-          <!-- Career Pathways -->
-          <div class="input-block">
-            <label class="input-label">
-              Career Pathways <span class="reference">(Ref: Government roles)</span>
-              <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: Government roles, International, Academic &amp; Research, Private/NGOs."></i>
-            </label>
-            <div class="input-options">
-              <label><input type="radio" name="careerPathway" value="government" checked /> Government roles 🏛️</label>
-              <label><input type="radio" name="careerPathway" value="international" /> International 🌐</label>
-              <label><input type="radio" name="careerPathway" value="academic" /> Academic &amp; Research 🎓</label>
-              <label><input type="radio" name="careerPathway" value="private" /> Private/NGOs 🤝</label>
-            </div>
-          </div>
-          <!-- Geographic Distribution -->
-          <div class="input-block">
-            <label class="input-label">
-              Geographic Distribution <span class="reference">(Ref: Regional)</span>
-              <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: Centralized Distribution 🏢, Regional Distribution 🏘️, Nationwide Distribution 🇮🇳."></i>
-            </label>
-            <div class="input-options">
-              <label><input type="radio" name="geographicDistribution" value="centralized" /> Centralized Distribution 🏢</label>
-              <label><input type="radio" name="geographicDistribution" value="regional" checked /> Regional Distribution 🏘️</label>
-              <label><input type="radio" name="geographicDistribution" value="nationwide" /> Nationwide Distribution 🇮🇳</label>
-            </div>
-          </div>
-          <!-- Accreditation & Quality Assurance -->
-          <div class="input-block">
-            <label class="input-label">
-              Accreditation &amp; Quality <span class="reference">(Ref: National)</span>
-              <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Options: Unaccredited, National Accreditation, International Accreditation."></i>
-            </label>
-            <div class="input-options">
-              <label><input type="radio" name="accreditation" value="unaccredited" /> Unaccredited ⚠️</label>
-              <label><input type="radio" name="accreditation" value="national" checked /> National 🇮🇳</label>
-              <label><input type="radio" name="accreditation" value="international" /> International 🌍</label>
-            </div>
-          </div>
-          <!-- Total Cost -->
-          <div class="input-block">
-            <label class="input-label">
-              Total Cost <span class="reference">(Ref: Medium - ₹55,000/month)</span>
-              <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Monthly cost: Low (₹27K), Medium (₹55K), High (₹83K)."></i>
-            </label>
-            <div class="input-options">
-              <label><input type="radio" name="totalCost" value="low" /> Low (₹27,000/month) 🟢</label>
-              <label><input type="radio" name="totalCost" value="medium" checked /> Medium (₹55,000/month) 🟡</label>
-              <label><input type="radio" name="totalCost" value="high" /> High (₹83,000/month) 🔴</label>
+        </div>
+        <!-- Group 4: Overall Program Cost -->
+        <div class="group-card">
+          <h3>Overall Program Cost</h3>
+          <div class="inputs-grid">
+            <!-- Total Cost -->
+            <div class="input-block">
+              <label class="input-label">
+                Total Cost <span class="reference">(Ref: Medium - ₹55,000/month)</span>
+                <i class="fa-solid fa-info-circle alternative-info" data-tooltip="Monthly cost: Low (₹27K), Medium (₹55K), High (₹83K)."></i>
+              </label>
+              <div class="input-options">
+                <label><input type="radio" name="totalCost" value="low" /> Low (₹27,000/month) 🟢</label>
+                <label><input type="radio" name="totalCost" value="medium" checked /> Medium (₹55,000/month) 🟡</label>
+                <label><input type="radio" name="totalCost" value="high" /> High (₹83,000/month) 🔴</label>
+              </div>
             </div>
           </div>
         </div>
